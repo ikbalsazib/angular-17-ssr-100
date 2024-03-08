@@ -1,19 +1,24 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 import {ContactUsComponent} from './contact-us/contact-us.component';
+import { ProductsComponent } from './products/products.component';
+import {ImgCtrlPipe} from '../../shared/pipes/img-ctrl.pipe';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    ContactUsComponent
+    ContactUsComponent,
+    ProductsComponent
   ],
   imports: [
     CommonModule,
-    HomeRoutingModule
+    HomeRoutingModule,
+    NgOptimizedImage,
+    ImgCtrlPipe
   ]
 })
 export class HomeModule { }
