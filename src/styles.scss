@@ -36,19 +36,6 @@ $ui-ssr-theme: mat.define-light-theme((
 @include mat.all-component-themes($ui-ssr-theme);
 
 /* You can add global styles to this file, and also import other style files */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-.container-fluid  {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  background: purple;
-  font-size: 1.2rem;
-}
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
