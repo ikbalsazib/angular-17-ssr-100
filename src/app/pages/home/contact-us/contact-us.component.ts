@@ -21,6 +21,7 @@ export class ContactUsComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
+    console.log(Date.now() + ' -> ContactUsComponent()')
     // Base Data
     this.getShopInformation();
   }

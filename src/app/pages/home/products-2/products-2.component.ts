@@ -1,17 +1,20 @@
-import {Component, inject, OnDestroy, OnInit} from '@angular/core';
+import {Component, inject, Input, OnDestroy, OnInit} from '@angular/core';
+import {RAW_SRC} from '../../../core/utils/app-data';
+import {Course} from '../../../interfaces/common/course.interface';
+import {Subscription} from 'rxjs';
 import {CourseService} from '../../../services/common/course.service';
 import {Pagination} from '../../../interfaces/core/pagination.interface';
 import {FilterData} from '../../../interfaces/core/filter-data.interface';
-import {Course} from '../../../interfaces/common/course.interface';
-import {Subscription} from 'rxjs';
-import {RAW_SRC} from '../../../core/utils/app-data';
 
 @Component({
-  selector: 'app-products',
-  templateUrl: './products.component.html',
-  styleUrl: './products.component.scss'
+  selector: 'app-products-2',
+  templateUrl: './products-2.component.html',
+  styleUrl: './products-2.component.scss'
 })
-export class ProductsComponent implements OnInit, OnDestroy {
+export class Products2Component implements OnInit, OnDestroy {
+
+  @Input({required: true}) img: string = null;
+  @Input({required: true}) page: number = 0;
 
   // Static Data
   readonly rawSrcset = RAW_SRC;
@@ -26,7 +29,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   private readonly courseService = inject(CourseService);
 
   ngOnInit(): void {
-    console.log(Date.now() + ' -> ProductsComponent()')
+    console.log(Date.now() + ' -> Products2Component()')
     // Base data
     this.getAllCourses();
   }
@@ -62,7 +65,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
 
     const pagination: Pagination = {
       pageSize: 9,
-      currentPage: 0,
+      currentPage: this.page,
     };
 
     const filterData: FilterData = {
@@ -80,7 +83,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
             return {
               ...m,
               ...{
-                bannerImage: 'https://ftp.tee.com.bd/upload/images/--2f51.webp?resolution=1920_1080'
+                bannerImage: this.img
               }
             }
           });
@@ -101,5 +104,4 @@ export class ProductsComponent implements OnInit, OnDestroy {
     }
 
   }
-
 }

@@ -28,4 +28,12 @@ export class CourseService {
     return this.httpClient.post<{ data: Course[], count: number, success: boolean }>(API_URL + 'get-all/', filterData, { params });
   }
 
+  getCourseById(id: string, select?: string) {
+    let params = new HttpParams();
+    if (select) {
+      params = params.append('select', select);
+    }
+    return this.httpClient.get<{ data: Course, message: string, success: boolean }>(API_URL + 'get-by-public/' + id, { params });
+  }
+
 }
